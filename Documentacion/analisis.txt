@@ -1,0 +1,24 @@
+# roles 
+
+  c++     
+        * websocket  
+        * generacion de terreno
+        * generacion de entidades
+        * logica simple ia
+        * estadisticas de entidades
+
+  javacript
+
+        * websocket
+        * visializacion de mapa
+        * visualizacion de entidades
+        * visualizacion de estadisticas
+
+  sqlite3
+        * mapa
+        * entidades
+        * estadisticas entidades
+
+# carpetas
+
+  Aincrad         

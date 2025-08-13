@@ -1,0 +1,58 @@
+html{
+ margin: 0;
+ padding: 0; 
+}
+
+body{
+ padding: 0; 
+ margin: 0;
+}
+
+#gameCanvas{
+ margin: 0;
+ padding: 0; 
+}
+
+canvas{
+ image-rendering: pixelated;
+}
+
+#btnGenerarMapa{
+  position: absolute;
+  background-color: #012;
+  color: #aaa;
+  border: none;
+  border-radius: 5px;
+}
+#btnCargar{
+  position: absolute;
+  background-color: #012;
+  color: #aaa;
+  border: none;
+  border-radius: 5px;
+  margin-left: 125px;
+}
+
+#btnOrganismo{
+  position: absolute;
+  background-color: #012;
+  color: #aaa;
+  border: none;
+  border-radius: 5px;
+  margin-left: 250px;
+}
+
+#contenedorFormulario{
+  position: absolute;
+  width: 30%;
+  margin-left: 80%;
+}
+
+form button{
+  background-color: #012;
+  color: #aaa;
+  border: none;
+  border-radius: 5px;
+
+}
+

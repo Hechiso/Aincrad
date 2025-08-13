@@ -9,6 +9,10 @@ window.innerHeight // alto de la ventana
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+var mapaAncho=canvas.width;
+var mapaAlto=canvas.height;
+
+
 
 
 // ----------------------------

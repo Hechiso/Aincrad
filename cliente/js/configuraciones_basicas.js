@@ -2,7 +2,6 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-
 window.innerWidth  // ancho de la ventana
 window.innerHeight // alto de la ventana
 
@@ -12,7 +11,3 @@ canvas.height = window.innerHeight;
 var mapaAncho=canvas.width;
 var mapaAlto=canvas.height;
 
-
-
-
-// ----------------------------

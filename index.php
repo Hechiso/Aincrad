@@ -1,28 +1,21 @@
 <html>
-<head></head>
+<head>
+ <link rel="stylesheet" href="css/estilos_juego.css">
+
+</head>
 <body>
-<p>hola si se puedo</p>
+    <!-- Botón para generar el mapa -->
+  <button id="btnGenerarMapa">Generar mapa</button>
+
+  <canvas id="gameCanvas"></canvas>
+
+  <script src="js/configuraciones_basicas.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/servidor.js"></script>
+  <script src="js/boton_generar.js"></script>
 
 
 
-<script>
-let ws = new WebSocket("ws://localhost:9000", "my-protocol");
-
-ws.onopen = () => {
-  console.log("Conectado!");
-  ws.send("Hola desde cliente C++");
-};
-
-ws.onmessage = (msg) => {
-  console.log("Recibido: ", msg.data);
-};
-
-ws.onclose = () => {
-  console.log("Conexión cerrada");
-};
-
-
-</script>
 </body>
 
 </html>

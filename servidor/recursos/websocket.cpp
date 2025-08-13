@@ -41,6 +41,7 @@ void WebSocketServer::signal_handler(int sig) {
 }
 
 void WebSocketServer::run(int port) {
+
     struct lws_protocols protocols[] = {
         {
             "my-protocol",
@@ -71,5 +72,6 @@ void WebSocketServer::run(int port) {
         lws_service(context, 1000);
     }
     std::cout << "Servidor detenido\n";
+
 }
 

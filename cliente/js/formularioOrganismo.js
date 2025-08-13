@@ -28,13 +28,18 @@ document.getElementById('btnOrganismo').addEventListener('click', () => {
   contenedor.appendChild(form);
   
 form.addEventListener('submit', (e) => {
-  e.preventDefault();
+   e.preventDefault();
   const nombre = inputNombre.value.trim();
   if(nombre) {
     crearOrganismo(nombre);
-    alert(`Organismo "${nombre}" creado!`);
-    form.reset();
+    game.agregarOrganismo();
+
+    // reemplaza el formulario por un mensaje
+    const mensaje = document.createElement('p');
+    mensaje.textContent = `Organismo "${nombre}" creado!`;
+    form.replaceWith(mensaje);
   }
+
 });
 
 

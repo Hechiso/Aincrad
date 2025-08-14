@@ -100,11 +100,12 @@ class Game {
   }
 
 
-agregarOrganismo() {
+agregarOrganismo(nombre) {
     const x = Math.floor(Math.random() * this.columnas);
     const y = Math.floor(Math.random() * this.filas);
 
     const organismo = {
+        nombre: nombre || 'Org',
         posicion: { x, y }
     };
 
@@ -114,7 +115,6 @@ agregarOrganismo() {
     localStorage.setItem("organismos", JSON.stringify(this.organismos));
     this.dibujarMatriz();
 }
-
 
 
 
@@ -154,20 +154,14 @@ setInterval(() => {
 }, 500);
 
 
-// Recuperar organismos guardados
+// Al cargar
 let organismosGuardados = JSON.parse(localStorage.getItem("organismos")) || [];
+game.organismos = organismosGuardados.map(orgData => ({
+    nombre: orgData.nombre,
+    posicion: orgData.posicion
+}));
 
-// Reconstruir los objetos
-game.organismos = organismosGuardados.map(orgData => {
-    const org = new Organismo(orgData.nombre); // crear objeto
-    org.posicion = orgData.posicion;           // restaurar posición
-    return org;
-});
-
-// Colocar en la matriz
 game.organismos.forEach(org => {
     game.matriz[org.posicion.y][org.posicion.x] = 5;
 });
-
 game.dibujarMatriz();
-

@@ -100,8 +100,7 @@ class Game {
   }
 
 
-  agregarOrganismo() {
-
+agregarOrganismo() {
     // Escoge una posición aleatoria
     const x = Math.floor(Math.random() * this.columnas);
     const y = Math.floor(Math.random() * this.filas);
@@ -109,7 +108,11 @@ class Game {
     // Coloca un 5 en esa posición
     this.matriz[y][x] = 5;
 
-    this.dibujarMatriz(); // Redibuja para mostrarlo
+    // Guardar la matriz actualizada
+    localStorage.setItem("mapa", JSON.stringify(this.matriz));
+
+    // Redibuja para mostrarlo
+    this.dibujarMatriz();
 }
 
 
@@ -121,7 +124,7 @@ class Game {
 var game = new Game('gameCanvas', canvas.height / 8, canvas.width / 8);
 
 // Guardar en localStorage
-localStorage.setItem("mapa", JSON.stringify(game.matriz));
+
 console.log(localStorage.getItem("mapa"));
 console.log(game.tileSize);
 

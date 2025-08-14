@@ -6,7 +6,7 @@ class Game {
     this.columnas = columnas;
     this.tileSize = tileSize;
     this.matriz = [];
-
+    this.organismos = [];
     for (let i = 0; i < filas; i++) {
       this.matriz[i] = [];
       for (let j = 0; j < columnas; j++) {
@@ -101,18 +101,30 @@ class Game {
 
 
 agregarOrganismo() {
-    // Escoge una posición aleatoria
     const x = Math.floor(Math.random() * this.columnas);
     const y = Math.floor(Math.random() * this.filas);
 
-    // Coloca un 5 en esa posición
+    const organismo = {
+        posicion: { x, y }
+    };
+
     this.matriz[y][x] = 5;
-
-    // Guardar la matriz actualizada
+    this.organismos.push(organismo);
     localStorage.setItem("mapa", JSON.stringify(this.matriz));
-
-    // Redibuja para mostrarlo
+    localStorage.setItem("organismos", JSON.stringify(this.organismos));
     this.dibujarMatriz();
+}
+
+
+
+
+
+moverOrganismo(org, filas, columnas) {
+    const dx = Math.floor(Math.random() * 3) - 1;
+    const dy = Math.floor(Math.random() * 3) - 1;
+
+    org.posicion.x = Math.max(0, Math.min(columnas - 1, org.posicion.x + dx));
+    org.posicion.y = Math.max(0, Math.min(filas - 1, org.posicion.y + dy));
 }
 
 
@@ -127,4 +139,35 @@ var game = new Game('gameCanvas', canvas.height / 8, canvas.width / 8);
 
 console.log(localStorage.getItem("mapa"));
 console.log(game.tileSize);
+
+
+
+setInterval(() => {
+  game.organismos.forEach(org => {
+    game.matriz[org.posicion.y][org.posicion.x] = 1;
+    game.moverOrganismo(org, game.filas, game.columnas);
+    game.matriz[org.posicion.y][org.posicion.x] = 5;
+  });
+  game.dibujarMatriz();
+  localStorage.setItem("mapa", JSON.stringify(game.matriz));
+  localStorage.setItem("organismos", JSON.stringify(game.organismos));
+}, 500);
+
+
+// Recuperar organismos guardados
+let organismosGuardados = JSON.parse(localStorage.getItem("organismos")) || [];
+
+// Reconstruir los objetos
+game.organismos = organismosGuardados.map(orgData => {
+    const org = new Organismo(orgData.nombre); // crear objeto
+    org.posicion = orgData.posicion;           // restaurar posición
+    return org;
+});
+
+// Colocar en la matriz
+game.organismos.forEach(org => {
+    game.matriz[org.posicion.y][org.posicion.x] = 5;
+});
+
+game.dibujarMatriz();
 

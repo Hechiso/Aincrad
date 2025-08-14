@@ -1,8 +1,10 @@
 
-function crearOrganismo(nombre) {
-
     // Recuperar lista de organismos existentes
     let listaOrganismos = JSON.parse(localStorage.getItem("organismos")) || [];
+
+
+function crearOrganismo(nombre) {
+
 
 
 	const organismo = new Organismo(nombre);
